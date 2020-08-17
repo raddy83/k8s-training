@@ -1,0 +1,9 @@
+{
+    "yaml.schemas": {
+        "https://json.schemastore.org/hadolint": ".hadolint.yaml",
+        "kubernetes": [
+            "/k8s/*"
+        ]
+    },
+    "hadolint.hadolintPath": "./.vscode/hadolint-1.18.0-windows.exe"
+}
