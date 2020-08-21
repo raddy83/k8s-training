@@ -3,21 +3,6 @@ kind: Pod
 metadata:
   name: init-demo
 spec:
-  containers:
-    - name: nginx
-      image: nginx
-      ports:
-        - containerPort: 80
-      volumeMounts:
-        - name: workdir
-          mountPath: /usr/share/nginx/html
-      resources:
-        requests:
-          memory: "64Mi"
-          cpu: "250m"
-        limits:
-          memory: "128Mi"
-          cpu: "500m"
   # These containers are run during pod initialization
   initContainers:
     - name: install
@@ -30,6 +15,21 @@ spec:
       volumeMounts:
         - name: workdir
           mountPath: "/work-dir"
+  containers:
+    - name: nginx
+      image: nginx:1.19.2
+      ports:
+        - containerPort: 80
+      volumeMounts:
+        - name: workdir
+          mountPath: /usr/share/nginx/html
+      resources:
+        requests:
+          memory: "64Mi"
+          cpu: "250m"
+        limits:
+          memory: "128Mi"
+          cpu: "500m"
   dnsPolicy: Default
   volumes:
     - name: workdir
